@@ -2,14 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 module.exports = {
   ...nextConfig,
-  compiler: {
-    styledComponents: {
-      displayName: true,
-      ssr: true,
-    },
-  },
 };
