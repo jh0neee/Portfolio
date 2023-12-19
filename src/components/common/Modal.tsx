@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import styled from "styled-components";
 import BackDrop from "./BackDrop";
 import { CSSTransition } from "react-transition-group";
+import { IoCloseOutline } from "react-icons/io5";
 
 interface ModalProps {
   show: boolean;
@@ -12,10 +13,32 @@ interface ModalProps {
   onSubmit?: (e: FormEvent) => void;
 }
 
-const ModalLayout = styled.div``;
-const ModalCloseIcon = styled.div``;
-const ModalForm = styled.form``;
-const ModalContent = styled.div``;
+const ModalLayout = styled.div`
+  z-index: 100;
+  position: fixed;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  max-height: 100vh;
+  width: 50%;
+  height: 60%;
+  background: white;
+  top: 57%;
+  padding: 2.125rem 2.75rem;
+  border-radius: 40px;
+`;
+
+const ModalCloseIcon = styled.div`
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const ModalContent = styled.div`
+  height: 400px;
+  font-size: 0.94rem;
+  padding: 1.125rem 0.5rem;
+  line-height: 1.4rem;
+`;
 
 const ModalOverlay: React.FC<ModalProps> = ({
   className,
@@ -25,10 +48,12 @@ const ModalOverlay: React.FC<ModalProps> = ({
 }) => {
   const content = (
     <ModalLayout className={className}>
-      <ModalCloseIcon onClick={onCancel}>Close Modal</ModalCloseIcon>
-      <ModalForm onSubmit={onSubmit ? onSubmit : e => e.preventDefault()}>
+      <ModalCloseIcon onClick={onCancel}>
+        <IoCloseOutline size="30px" />
+      </ModalCloseIcon>
+      <form onSubmit={onSubmit ? onSubmit : e => e.preventDefault()}>
         <ModalContent>{children}</ModalContent>
-      </ModalForm>
+      </form>
     </ModalLayout>
   );
 
@@ -39,7 +64,6 @@ const ModalOverlay: React.FC<ModalProps> = ({
 };
 
 const Modal: React.FC<ModalProps> = props => {
-  console.log(props);
   return (
     <>
       {props.show && <BackDrop />}

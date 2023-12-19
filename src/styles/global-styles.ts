@@ -20,6 +20,13 @@ ${normalize}
   ul {
     list-style: none;
   }
+  textarea {
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+  }
 
   @font-face {
     font-family: 'SUIT-Regular';
@@ -41,4 +48,8 @@ ${normalize}
     font-weight: normal;
     font-style: normal;
 }
+
+  #__next {
+    width: 100vw;
+  }
 `;

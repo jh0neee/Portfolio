@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import Contact from "../views/Contact";
 
 const HeaderContainer = styled.div`
   height: 120px;
@@ -47,10 +49,24 @@ const HeaderMenu = styled.div`
     &:first-child {
       margin-right: 67px;
     }
+
+    &:last-child {
+      cursor: pointer;
+    }
   }
 `;
 
 const NavBar = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <HeaderContainer>
       <HeaderTitle>
@@ -62,8 +78,9 @@ const NavBar = () => {
       </HeaderTitle>
       <HeaderMenu>
         <p>BLOG</p>
-        <p>CONNECT</p>
+        <p onClick={openModal}>CONTACT</p>
       </HeaderMenu>
+      <Contact showModal={showModal} closeModal={closeModal} />
     </HeaderContainer>
   );
 };
