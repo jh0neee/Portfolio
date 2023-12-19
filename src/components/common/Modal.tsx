@@ -16,13 +16,13 @@ interface ModalProps {
 const ModalLayout = styled.div`
   z-index: 100;
   position: fixed;
-  left: 60%;
+  left: 55%;
   transform: translate(-50%, -50%);
   max-height: 100vh;
-  width: 50%;
-  height: 60%;
+  width: 700px;
+  height: 500px;
   background: white;
-  top: 57%;
+  top: 50%;
   padding: 2.125rem 2.75rem;
   border-radius: 40px;
 `;
