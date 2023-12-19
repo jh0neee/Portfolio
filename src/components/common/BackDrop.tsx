@@ -2,10 +2,6 @@ import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-interface BackDropProps {
-  onClick: () => void;
-}
-
 const BackDropLayout = styled.div`
   position: fixed;
   width: 100%;
@@ -14,7 +10,7 @@ const BackDropLayout = styled.div`
   z-index: 10;
 `;
 
-const BackDrop: React.FC<BackDropProps> = ({ onClick }) => {
+const BackDrop: React.FC = () => {
   useEffect(() => {
     // 기존 스타일의 overflow,top 속성 값 저장. 이후 언마운트될 때 body의 overflow, top 속성을 원래상태로 복원하기 위함
     const originalOverflow = document.body.style.overflow;
@@ -39,7 +35,7 @@ const BackDrop: React.FC<BackDropProps> = ({ onClick }) => {
   }, []);
 
   return ReactDOM.createPortal(
-    <BackDropLayout onClick={onClick} />,
+    <BackDropLayout />,
     document.getElementById("backdrop") as HTMLElement,
   );
 };

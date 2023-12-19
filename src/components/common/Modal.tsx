@@ -42,7 +42,7 @@ const Modal: React.FC<ModalProps> = props => {
   console.log(props);
   return (
     <>
-      {props.show && <BackDrop onClick={props.onCancel} />}
+      {props.show && <BackDrop />}
       <CSSTransition
         in={props.show}
         mountOnEnter
