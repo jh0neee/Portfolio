@@ -6,6 +6,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   padding: 0 3.5rem 0 0;
   background: lightyellow;
+  font-family: "PuradakGentleGothicR";
 `;
 
 const HeaderTitle = styled.div`
@@ -13,9 +14,9 @@ const HeaderTitle = styled.div`
   align-items: center;
 
   > p {
-    padding-left: 0.5rem;
+    padding-left: 27px;
     font-size: 2rem;
-    letter-spacing: 3px;
+    letter-spacing: 0.5px;
   }
 `;
 

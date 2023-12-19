@@ -6,6 +6,7 @@ const Navigation = styled.ul`
   flex-direction: column;
   margin-top: 77px;
   min-width: 160px;
+  font-family: "PuradakGentleGothicR";
 
   > * {
     margin-bottom: 92px;
@@ -13,8 +14,8 @@ const Navigation = styled.ul`
     align-self: center;
     text-decoration: none;
 
-    &:nth-child(4) {
-      margin-bottom: 1rem;
+    &:nth-child(3) {
+      margin-bottom: 2rem;
     }
   }
 `;
@@ -25,7 +26,7 @@ const ProjectList = styled.ul`
   align-items: center;
 
   > * {
-    margin-bottom: 1rem;
+    margin-bottom: 21px;
   }
 `;
 
