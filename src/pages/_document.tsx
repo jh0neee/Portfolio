@@ -41,6 +41,8 @@ class MyDocument extends Document {
           <meta name="viewport" content="width=device-width" />
         </Head>
         <body>
+          <div id="backdrop"></div>
+          <div id="portal"></div>
           <Main />
           <NextScript />
         </body>
