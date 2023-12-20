@@ -11,6 +11,7 @@ interface ModalProps {
   className?: string;
   children: ReactNode;
   onSubmit?: (e: FormEvent) => void;
+  formRef?: React.RefObject<HTMLFormElement>;
 }
 
 const ModalLayout = styled.div`
@@ -45,13 +46,17 @@ const ModalOverlay: React.FC<ModalProps> = ({
   onCancel,
   children,
   onSubmit,
+  formRef,
 }) => {
   const content = (
     <ModalLayout className={className}>
       <ModalCloseIcon onClick={onCancel}>
         <IoCloseOutline size="30px" />
       </ModalCloseIcon>
-      <form onSubmit={onSubmit ? onSubmit : e => e.preventDefault()}>
+      <form
+        onSubmit={onSubmit ? onSubmit : e => e.preventDefault()}
+        ref={formRef}
+      >
         <ModalContent>{children}</ModalContent>
       </form>
     </ModalLayout>
