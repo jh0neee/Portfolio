@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import styled from "styled-components";
 import Contact from "../views/Contact";
 
@@ -15,7 +16,7 @@ const HeaderTitle = styled.div`
   display: flex;
   align-items: center;
 
-  > p {
+  > a {
     padding-left: 27px;
     font-size: 2rem;
     letter-spacing: 0.5px;
@@ -74,10 +75,10 @@ const NavBar = () => {
           <div />
           <div />
         </HeaderLine>
-        <p>PORTFOLIO</p>
+        <Link href="/">PORTFOLIO</Link>
       </HeaderTitle>
       <HeaderMenu>
-        <p>BLOG</p>
+        <Link href="/blog">BLOG</Link>
         <p onClick={openModal}>CONTACT</p>
       </HeaderMenu>
       <Contact showModal={showModal} closeModal={closeModal} />

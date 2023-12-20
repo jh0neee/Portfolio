@@ -6,7 +6,7 @@ import Billim from "@/components/project1";
 import Survey from "@/components/project2";
 import Portfolio from "@/components/project3";
 
-const ContentLayout = styled.div`
+export const ContentLayout = styled.div`
   display: grid;
   grid-template-columns: 0.2fr 1fr;
 `;
