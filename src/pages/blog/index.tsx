@@ -1,8 +1,9 @@
+import { NextPage } from "next";
+import styled from "styled-components";
+import Parser from "rss-parser";
 import NavBar from "@/components/layout/NavBar";
 import SideBar from "@/components/layout/SideBar";
 import { ContentLayout } from "./../index";
-import styled from "styled-components";
-import Parser from "rss-parser";
 
 interface BlogPost {
   title: string;
@@ -10,7 +11,7 @@ interface BlogPost {
   date: string;
 }
 
-const Blog: React.FC<{ blogPosts: BlogPost[] }> = ({ blogPosts }) => {
+const Blog: NextPage<{ blogPosts: BlogPost[] }> = ({ blogPosts }) => {
   const dateFormat = (date: string) => {
     const day = new Date(date);
 
@@ -80,9 +81,11 @@ export async function getServerSideProps() {
 export default Blog;
 
 const Content = styled.div`
+  width: 80%;
   padding: 1.5rem 2rem 0;
   font-size: 1rem;
-  background: #fff;
+  background-image: url("/granite-texture.jpg");
+  background-size: contain;
   color: #fff;
 `;
 
@@ -132,6 +135,10 @@ const MemoList = styled.ul`
     text-underline-position: under;
     font-weight: bold;
   }
+
+  li:nth-child(8) a {
+    margin-right: 0;
+  }
 `;
 
 const MemoItem = styled.li`
@@ -151,7 +158,7 @@ const MemoLink = styled.a`
   width: 200px;
   padding: 1rem;
   margin-top: 20px;
-  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.2);
+  box-shadow: 2px 11px 5px rgba(33, 33, 33, 0.5);
   transition: transform 0.15s linear;
   transform: rotate(-6deg);
   line-height: 1.5;

@@ -51,5 +51,6 @@ ${normalize}
 
   #__next {
     width: 100vw;
+    height: 100vh;
   }
 `;

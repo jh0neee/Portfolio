@@ -1,35 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-const Navigation = styled.ul`
-  display: flex;
-  flex-direction: column;
-  margin-top: 77px;
-  min-width: 160px;
-  font-family: "PuradakGentleGothicR";
-
-  > * {
-    margin-bottom: 92px;
-    font-size: 22px;
-    align-self: center;
-    text-decoration: none;
-
-    &:nth-child(3) {
-      margin-bottom: 2rem;
-    }
-  }
-`;
-
-const ProjectList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  > * {
-    margin-bottom: 21px;
-  }
-`;
-
 const SideBar = () => {
   return (
     <Navigation>
@@ -58,3 +29,34 @@ const SideBar = () => {
 };
 
 export default SideBar;
+
+const Navigation = styled.ul`
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 77px;
+  min-width: 160px;
+  font-family: "PuradakGentleGothicR";
+
+  > * {
+    margin-bottom: 92px;
+    font-size: 22px;
+    align-self: center;
+    text-decoration: none;
+
+    &:nth-child(3) {
+      margin-bottom: 2rem;
+    }
+  }
+`;
+
+const ProjectList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > * {
+    margin-bottom: 21px;
+  }
+`;
