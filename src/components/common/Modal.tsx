@@ -14,6 +14,52 @@ interface ModalProps {
   formRef?: React.RefObject<HTMLFormElement>;
 }
 
+const ModalOverlay = ({
+  className,
+  onCancel,
+  children,
+  onSubmit,
+  formRef,
+}: ModalProps) => {
+  const content = (
+    <ModalLayout className={className}>
+      <ModalCloseIcon onClick={onCancel}>
+        <IoCloseOutline size="30px" />
+      </ModalCloseIcon>
+      <form
+        onSubmit={onSubmit ? onSubmit : e => e.preventDefault()}
+        ref={formRef}
+      >
+        <ModalContent>{children}</ModalContent>
+      </form>
+    </ModalLayout>
+  );
+
+  return ReactDOM.createPortal(
+    content,
+    document.getElementById("portal") as HTMLElement,
+  );
+};
+
+const Modal = (props: ModalProps) => {
+  return (
+    <>
+      {props.show && <BackDrop />}
+      <CSSTransition
+        in={props.show}
+        mountOnEnter
+        unmountOnExit
+        timeout={200}
+        classNames="modal"
+      >
+        <ModalOverlay {...props} />
+      </CSSTransition>
+    </>
+  );
+};
+
+export default Modal;
+
 const ModalLayout = styled.div`
   z-index: 100;
   position: fixed;
@@ -40,49 +86,3 @@ const ModalContent = styled.div`
   padding: 1.125rem 0.5rem;
   line-height: 1.4rem;
 `;
-
-const ModalOverlay: React.FC<ModalProps> = ({
-  className,
-  onCancel,
-  children,
-  onSubmit,
-  formRef,
-}) => {
-  const content = (
-    <ModalLayout className={className}>
-      <ModalCloseIcon onClick={onCancel}>
-        <IoCloseOutline size="30px" />
-      </ModalCloseIcon>
-      <form
-        onSubmit={onSubmit ? onSubmit : e => e.preventDefault()}
-        ref={formRef}
-      >
-        <ModalContent>{children}</ModalContent>
-      </form>
-    </ModalLayout>
-  );
-
-  return ReactDOM.createPortal(
-    content,
-    document.getElementById("portal") as HTMLElement,
-  );
-};
-
-const Modal: React.FC<ModalProps> = props => {
-  return (
-    <>
-      {props.show && <BackDrop />}
-      <CSSTransition
-        in={props.show}
-        mountOnEnter
-        unmountOnExit
-        timeout={200}
-        classNames="modal"
-      >
-        <ModalOverlay {...props} />
-      </CSSTransition>
-    </>
-  );
-};
-
-export default Modal;

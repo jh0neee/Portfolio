@@ -10,7 +10,7 @@ const BackDropLayout = styled.div`
   z-index: 10;
 `;
 
-const BackDrop: React.FC = () => {
+const BackDrop = () => {
   useEffect(() => {
     // 기존 스타일의 overflow,top 속성 값 저장. 이후 언마운트될 때 body의 overflow, top 속성을 원래상태로 복원하기 위함
     const originalOverflow = document.body.style.overflow;
