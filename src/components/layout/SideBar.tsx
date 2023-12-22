@@ -31,7 +31,7 @@ const SideBar = () => {
 export default SideBar;
 
 const Navigation = styled.ul`
-  width: 20%;
+  width: 14%;
   display: flex;
   flex-direction: column;
   justify-content: center;

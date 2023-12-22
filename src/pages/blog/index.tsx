@@ -71,7 +71,8 @@ export async function getServerSideProps() {
       props: { blogPosts },
     };
   } catch (error) {
-    console.error("Error fetching blog posts:", error);
+    alert("post를 가져오지 못했습니다.");
+
     return {
       props: { blogPosts: [] },
     };
@@ -81,11 +82,13 @@ export async function getServerSideProps() {
 export default Blog;
 
 const Content = styled.div`
-  width: 80%;
+  width: 86%;
+  display: flex;
+  align-items: center;
   padding: 1.5rem 2rem 0;
   font-size: 1rem;
-  background-image: url("/granite-texture.jpg");
-  background-size: contain;
+  background-image: url("/image/granite-texture.jpg");
+  background-size: cover;
   color: #fff;
 `;
 
@@ -96,7 +99,7 @@ const MemoList = styled.ul`
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-row-gap: 2.5rem;
+  grid-gap: 2.5rem;
   justify-items: center;
 
   li:nth-child(even) a {
@@ -138,6 +141,11 @@ const MemoList = styled.ul`
 
   li:nth-child(8) a {
     margin-right: 0;
+  }
+
+  @media (max-width: 1600px) {
+    grid-row-gap: 2.5rem;
+    grid-column-gap: 0;
   }
 `;
 
