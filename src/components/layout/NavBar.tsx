@@ -1,7 +1,55 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Contact from "../views/Contact";
+
+interface BlogLink {
+  name: string;
+  path: string;
+  $openModal: boolean;
+}
+
+const NavBar = () => {
+  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  return (
+    <HeaderContainer>
+      <HeaderTitle>
+        <HeaderLine>
+          <div />
+          <div />
+        </HeaderLine>
+        <Link href="/">PORTFOLIO</Link>
+      </HeaderTitle>
+      <HeaderMenu>
+        <BlogLink
+          href="/blog"
+          name="/blog"
+          path={router.pathname}
+          $openModal={showModal}
+        >
+          BLOG
+        </BlogLink>
+        <ContactLink onClick={openModal} $openModal={showModal}>
+          CONTACT
+        </ContactLink>
+      </HeaderMenu>
+      <Contact showModal={showModal} closeModal={closeModal} />
+    </HeaderContainer>
+  );
+};
+
+export default NavBar;
 
 const HeaderContainer = styled.div`
   height: 120px;
@@ -57,33 +105,40 @@ const HeaderMenu = styled.div`
   }
 `;
 
-const NavBar = () => {
-  const [showModal, setShowModal] = useState(false);
+const commonLinkStyle = css`
+  position: relative;
+  display: inline-block;
 
-  const openModal = () => {
-    setShowModal(true);
-  };
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: -4px;
+    height: 5px;
+    background-color: #8ebcb1;
+    border-radius: 5px;
+  }
+`;
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+const BlogLink = styled(Link)<BlogLink>`
+  ${props =>
+    props.name === props.path &&
+    !props.$openModal &&
+    css`
+      ${commonLinkStyle}
+      &::after {
+        width: 67px;
+      }
+    `}
+`;
 
-  return (
-    <HeaderContainer>
-      <HeaderTitle>
-        <HeaderLine>
-          <div />
-          <div />
-        </HeaderLine>
-        <Link href="/">PORTFOLIO</Link>
-      </HeaderTitle>
-      <HeaderMenu>
-        <Link href="/blog">BLOG</Link>
-        <p onClick={openModal}>CONTACT</p>
-      </HeaderMenu>
-      <Contact showModal={showModal} closeModal={closeModal} />
-    </HeaderContainer>
-  );
-};
-
-export default NavBar;
+const ContactLink = styled.p<{ $openModal: boolean }>`
+  ${props =>
+    props.$openModal &&
+    css`
+      ${commonLinkStyle}
+      &::after {
+        width: 108px;
+      }
+    `}
+`;
