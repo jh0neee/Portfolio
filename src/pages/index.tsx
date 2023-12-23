@@ -33,5 +33,5 @@ export const ContentLayout = styled.div`
 `;
 
 const Content = styled.div`
-  width: 80%;
+  width: 86%;
 `;
