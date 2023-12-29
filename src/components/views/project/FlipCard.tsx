@@ -16,12 +16,13 @@ const FlipCard = () => {
   };
 
   return (
-    <>
+    <CardWrapper>
       {/* <input
         type="checkbox"
         checked={isChecked}
         onChange={() => setIsChecked(prev => !prev)}
       /> */}
+      <p>아래 이미지를 클릭하면 자세히 볼 수 있습니다.</p>
       <Container onClick={handleCardClick}>
         <Card $isFlipped={isFlipped} $isChecked={isChecked}>
           <Front>
@@ -43,11 +44,19 @@ const FlipCard = () => {
           </Back>
         </Card>
       </Container>
-    </>
+    </CardWrapper>
   );
 };
 
 export default FlipCard;
+
+const CardWrapper = styled.div`
+  > p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #888;
+  }
+`;
 
 const Container = styled.div`
   position: relative;
