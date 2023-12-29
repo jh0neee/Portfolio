@@ -51,7 +51,7 @@ const Project = () => {
                   {link.href.map(href => (
                     <a href={href}>{href}</a>
                   ))}
-                  {link.text && <p>{link.text}</p>}
+                  {link.text && <LinkText>{link.text}</LinkText>}
                 </SubTitleBox>
               ))}
             </ExplainContent>
@@ -116,7 +116,8 @@ const TitleBox = styled.div`
 
 const TitleText = styled.p`
   width: 320px;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
   margin: 1rem 0 0;
 `;
 
@@ -171,4 +172,9 @@ const SubTitleBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1.5rem;
+`;
+
+const LinkText = styled.p`
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
 `;
