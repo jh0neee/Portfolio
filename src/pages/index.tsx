@@ -2,10 +2,7 @@ import { NextPage } from "next";
 import styled from "styled-components";
 import SideBar from "@/components/layout/SideBar";
 import NavBar from "@/components/layout/NavBar";
-import Skill from "@/components/skill";
-import Billim from "@/components/project1";
-import Survey from "@/components/project2";
-import Portfolio from "@/components/project3";
+import Project from "@/components/views/project/project";
 
 const Home: NextPage = () => {
   return (
@@ -14,10 +11,7 @@ const Home: NextPage = () => {
       <ContentLayout>
         <SideBar />
         <Content>
-          <Skill />
-          <Billim />
-          <Survey />
-          <Portfolio />
+          <Project />
         </Content>
       </ContentLayout>
     </>
