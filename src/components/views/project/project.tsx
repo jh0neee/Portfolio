@@ -134,15 +134,14 @@ const TitleText = styled.p`
 
 const ContentContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
-  margin: 3rem 0 0;
-  align-items: center;
+  margin: 3rem 6rem 3rem 0;
 `;
 
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 35%;
 `;
 
 const ContentTitle = styled.div`
@@ -158,7 +157,7 @@ const ContentText = styled.p`
 const SubContentBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin: 1rem 0;
 
   > div:first-child {
     margin-bottom: 1rem;
