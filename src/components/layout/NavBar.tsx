@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import Contact from "../views/Contact";
 
-interface BlogLink {
+interface BlogLinkProps {
   name: string;
   path: string;
   $openModal: boolean;
@@ -52,10 +52,12 @@ const NavBar = () => {
 export default NavBar;
 
 const HeaderContainer = styled.div`
+  position: fixed;
+  z-index: 9;
+  width: 100vw;
   height: 120px;
   display: flex;
   justify-content: space-between;
-  padding: 0 3.5rem 0 0;
   background: lightyellow;
   font-family: "PuradakGentleGothicR";
 `;
@@ -101,6 +103,7 @@ const HeaderMenu = styled.div`
 
     &:last-child {
       cursor: pointer;
+      margin-right: 60px;
     }
   }
 `;
@@ -120,7 +123,7 @@ const commonLinkStyle = css`
   }
 `;
 
-const BlogLink = styled(Link)<BlogLink>`
+const BlogLink = styled(Link)<BlogLinkProps>`
   ${props =>
     props.name === props.path &&
     !props.$openModal &&
