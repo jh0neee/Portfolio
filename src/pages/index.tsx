@@ -45,7 +45,6 @@ export const ContentLayout = styled.div`
 
 const Content = styled.div`
   width: 86%;
-  margin-top: 120px;
   overflow-x: hidden;
   overflow-y: auto;
 `;

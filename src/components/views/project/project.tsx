@@ -57,7 +57,7 @@ const Project = () => {
             </ExplainContent>
           </TitleContainer>
           <ContentContainer>
-            <ContentBox>
+            <ContentBox className="introBox">
               <ContentTitle>프로젝트 소개</ContentTitle>
               <ContentText>{data.content}</ContentText>
               <SubContentBox>
@@ -95,6 +95,11 @@ const DataWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   height: calc(100vh - 120px);
+  padding-top: 120px;
+
+  @media (min-width: 1540px) {
+    flex-direction: column;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -103,6 +108,12 @@ const TitleContainer = styled.div`
   margin: 0 5rem;
   align-items: center;
   align-content: center;
+
+  @media (min-width: 1540px) {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3rem 5rem 0;
+  }
 `;
 
 const ExplainContent = styled.div`
@@ -137,11 +148,25 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   margin: 3rem 6rem 3rem 0;
+
+  @media (min-width: 1540px) {
+    flex-direction: row;
+    justify-content: center;
+    margin: 3rem 0 0;
+  }
 `;
 
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 1540px) {
+    width: 30%;
+
+    &.introBox {
+      margin-right: 5rem;
+    }
+  }
 `;
 
 const ContentTitle = styled.div`
@@ -161,6 +186,14 @@ const SubContentBox = styled.div`
 
   > div:first-child {
     margin-bottom: 1rem;
+  }
+
+  @media (min-width: 1540px) {
+    flex-direction: row;
+
+    > div:first-child {
+      width: 100%;
+    }
   }
 `;
 
