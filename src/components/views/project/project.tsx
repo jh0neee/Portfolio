@@ -28,7 +28,7 @@ const Project = () => {
   return (
     <ProjectLayout>
       {data?.map(data => (
-        <>
+        <DataWrapper>
           <TitleContainer>
             <FlipCard />
             <ExplainContent>
@@ -76,7 +76,7 @@ const Project = () => {
               <ContentText>{data.probsolv}</ContentText>
             </ContentBox>
           </ContentContainer>
-        </>
+        </DataWrapper>
       ))}
     </ProjectLayout>
   );
@@ -89,10 +89,20 @@ const ProjectLayout = styled.div`
   flex-direction: column;
   font-family: "SUIT-Regular";
 `;
-const TitleContainer = styled.div`
+
+const DataWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  margin: 3rem 5rem 0;
+  flex-direction: row;
+  justify-content: center;
+  height: calc(100vh - 120px);
+`;
+
+const TitleContainer = styled.div`
+  display: grid;
+  justify-items: center;
+  margin: 0 5rem;
+  align-items: center;
+  align-content: center;
 `;
 
 const ExplainContent = styled.div`
@@ -100,6 +110,7 @@ const ExplainContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-top: 1rem;
 `;
 
 const TitleBox = styled.div`
@@ -115,8 +126,8 @@ const TitleBox = styled.div`
 `;
 
 const TitleText = styled.p`
-  width: 320px;
-  font-size: 1.25rem;
+  width: 335px;
+  font-size: 1.1rem;
   line-height: 1.3;
   margin: 1rem 0 0;
 `;
@@ -125,6 +136,7 @@ const ContentContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin: 3rem 0 0;
+  align-items: center;
 `;
 
 const ContentBox = styled.div`
@@ -145,10 +157,11 @@ const ContentText = styled.p`
 
 const SubContentBox = styled.div`
   display: flex;
+  flex-direction: column;
   margin-top: 1rem;
 
   > div:first-child {
-    width: 48%;
+    margin-bottom: 1rem;
   }
 `;
 

@@ -84,6 +84,7 @@ export default Blog;
 const Content = styled.div`
   width: 86%;
   display: flex;
+  margin-top: 120px;
   align-items: center;
   padding: 1.5rem 2rem 0;
   font-size: 1rem;

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import SideBar from "@/components/layout/SideBar";
 import NavBar from "@/components/layout/NavBar";
 import Project from "@/components/views/project/project";
-import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { getData } from "@/firebase/firebase";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 
 const Home: NextPage = () => {
   return (
@@ -38,11 +38,14 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export const ContentLayout = styled.div`
-  height: calc(100% - 120px);
+  height: 100%;
   display: flex;
   justify-content: space-between;
 `;
 
 const Content = styled.div`
   width: 86%;
+  margin-top: 120px;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;

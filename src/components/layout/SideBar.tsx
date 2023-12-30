@@ -35,7 +35,7 @@ const Navigation = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 77px;
+  margin-top: 200px;
   min-width: 160px;
   font-family: "PuradakGentleGothicR";
 
