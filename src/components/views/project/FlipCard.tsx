@@ -31,6 +31,7 @@ const FlipCard = () => {
               alt="front이미지"
               width={600}
               height={300}
+              priority
             />
           </Front>
 
@@ -40,6 +41,7 @@ const FlipCard = () => {
               alt="back이미지"
               width={600}
               height={300}
+              priority
             />
           </Back>
         </Card>
