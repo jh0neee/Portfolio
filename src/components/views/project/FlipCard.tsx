@@ -60,8 +60,8 @@ const CardWrapper = styled.div`
 
 const Container = styled.div`
   position: relative;
-  width: 600px;
-  height: 300px;
+  width: 480px;
+  height: 250px;
 `;
 
 const Card = styled.div<StyleCard>`
