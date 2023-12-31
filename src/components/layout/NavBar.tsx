@@ -58,7 +58,7 @@ const HeaderContainer = styled.div`
   height: 120px;
   display: flex;
   justify-content: space-between;
-  background: lightyellow;
+  background: rgba(255, 255, 255, 0.7);
   font-family: "PuradakGentleGothicR";
 `;
 
