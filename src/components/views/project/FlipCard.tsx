@@ -29,8 +29,8 @@ const FlipCard = () => {
             <Image
               src="/image/project_billim.png"
               alt="front이미지"
-              width={600}
-              height={300}
+              width={480}
+              height={250}
               priority
             />
           </Front>
@@ -39,8 +39,8 @@ const FlipCard = () => {
             <Image
               src="/image/project_survey.png"
               alt="back이미지"
-              width={600}
-              height={300}
+              width={480}
+              height={250}
               priority
             />
           </Back>
