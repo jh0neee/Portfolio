@@ -55,7 +55,7 @@ const HeaderContainer = styled.div`
   position: fixed;
   z-index: 9;
   width: 100vw;
-  height: 120px;
+  height: 84px;
   display: flex;
   justify-content: space-between;
   background: rgba(255, 255, 255, 0.7);
@@ -79,7 +79,7 @@ const HeaderLine = styled.div`
 
   > * {
     width: 15px;
-    height: 60px;
+    height: 42px;
 
     &:first-child {
       background: #245254;

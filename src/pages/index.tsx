@@ -45,6 +45,7 @@ export const ContentLayout = styled.div`
 
 const Content = styled.div`
   width: 86%;
-  overflow-x: hidden;
-  overflow-y: auto;
+    overflow: auto;
+    position: relative;
+    left: 13.9%;
 `;

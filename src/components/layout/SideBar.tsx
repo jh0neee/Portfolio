@@ -1,7 +1,11 @@
-import Link from "next/link";
+import { useGoToMenu } from "@/hooks/useGoToMenu";
 import styled from "styled-components";
 
+const projectMenu = ["Billim", "Portfolio", "Survey"];
+
 const SideBar = () => {
+  const { handleGoTo } = useGoToMenu();
+
   return (
     <Navigation>
       <li>
@@ -14,15 +18,11 @@ const SideBar = () => {
         <p>PROJECT</p>
       </li>
       <ProjectList>
-        <li>
-          <p>Billim</p>
-        </li>
-        <li>
-          <p>Survey</p>
-        </li>
-        <li>
-          <p>Portfolio</p>
-        </li>
+        {projectMenu.map(menu => (
+          <li key={menu}>
+            <p onClick={() => handleGoTo(menu)}>{menu}</p>
+          </li>
+        ))}
       </ProjectList>
     </Navigation>
   );
@@ -32,6 +32,7 @@ export default SideBar;
 
 const Navigation = styled.ul`
   width: 14%;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,5 +59,6 @@ const ProjectList = styled.ul`
 
   > * {
     margin-bottom: 21px;
+    cursor: pointer;
   }
 `;

@@ -28,7 +28,7 @@ const Project = () => {
   return (
     <ProjectLayout>
       {data?.map(data => (
-        <DataWrapper>
+        <DataWrapper id={data.name}>
           <TitleContainer>
             <FlipCard />
             <ExplainContent>
@@ -94,8 +94,8 @@ const DataWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: calc(100vh - 120px);
-  padding-top: 120px;
+  height: calc(100vh - 84px);
+  padding-top: 84px;
 
   @media (min-width: 1540px) {
     flex-direction: column;

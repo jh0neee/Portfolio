@@ -49,10 +49,6 @@ ${normalize}
     font-style: normal;
 }
 
-  #__next {
-    width: 100vw;
-    height: 100vh;
-  }
 
   // scroll bar
   ::-webkit-scrollbar {
