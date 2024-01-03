@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import styled from "styled-components";
 import SideBar from "@/components/layout/SideBar";
 import NavBar from "@/components/layout/NavBar";
-import Project from "@/components/views/project/project";
+import Project from "@/components/views/project/Project";
 import { getData } from "@/firebase/firebase";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 
@@ -45,7 +45,7 @@ export const ContentLayout = styled.div`
 
 const Content = styled.div`
   width: 86%;
-    overflow: auto;
-    position: relative;
-    left: 13.9%;
+  overflow: auto;
+  position: relative;
+  left: 13.9%;
 `;
