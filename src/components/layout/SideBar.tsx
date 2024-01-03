@@ -3,7 +3,16 @@ import { activeMenuState } from "@/recoil/atom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 
-const projectMenu = ["Billim", "Portfolio", "Survey"];
+const projectMenu = [
+  { name: "Billim", width: "90px", left: "-10px" },
+  { name: "Portfolio", width: "130px", left: "-11px" },
+  { name: "Survey", width: "100px", left: "-6px" },
+];
+
+interface ActiveProps {
+  $menuWidth: string;
+  $menuLeft: string;
+}
 
 const SideBar = () => {
   const [activeMenu, setActiveMenu] = useRecoilState(activeMenuState);
@@ -27,12 +36,14 @@ const SideBar = () => {
       </li>
       <ProjectList>
         {projectMenu.map(menu => (
-          <li key={menu}>
+          <li key={menu.name}>
             <Menu
-              className={activeMenu === `${menu}` ? "active" : ""}
-              onClick={() => handleActive(menu)}
+              className={activeMenu === `${menu.name}` ? "active" : ""}
+              $menuWidth={menu.width}
+              $menuLeft={menu.left}
+              onClick={() => handleActive(menu.name)}
             >
-              {menu}
+              {menu.name}
             </Menu>
           </li>
         ))}
@@ -76,7 +87,7 @@ const ProjectList = styled.ul`
   }
 `;
 
-const Menu = styled.div`
+const Menu = styled.div<ActiveProps>`
   &.active {
     position: relative;
     display: inline-block;
@@ -85,11 +96,11 @@ const Menu = styled.div`
   &.active::after {
     content: "";
     position: absolute;
-    bottom: -8px;
-    left: 5px;
+    bottom: -10px;
+    left: ${({ $menuLeft }) => $menuLeft || "5px"};
     height: 5px;
     background-color: #8ebcb1;
     border-radius: 5px;
-    width: 100px;
+    width: ${({ $menuWidth }) => $menuWidth || "100px"};
   }
 `;
