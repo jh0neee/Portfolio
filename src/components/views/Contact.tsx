@@ -1,8 +1,8 @@
 import { FormEvent, useRef, useState } from "react";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
-import { theme } from "@/styles/theme";
 import Modal from "../common/Modal";
+import { BeatLoader } from "react-spinners";
 
 interface ContactProps {
   showModal: boolean;
@@ -12,6 +12,8 @@ interface ContactProps {
 const Contact = ({ showModal, closeModal }: ContactProps) => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const formRef = useRef<HTMLFormElement>(null);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const { name, email, message } = form;
   const disabledValue = !name || !email || !message;
@@ -40,6 +42,8 @@ const Contact = ({ showModal, closeModal }: ContactProps) => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     try {
       await emailjs.sendForm(
         process.env.NEXT_PUBLIC_SERVICE_ID!,
@@ -53,6 +57,8 @@ const Contact = ({ showModal, closeModal }: ContactProps) => {
       resetForm();
     } catch (err) {
       alert("메일이 발송되지 않았습니다. 잠시 후 다시 시도해주세요.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -88,7 +94,11 @@ const Contact = ({ showModal, closeModal }: ContactProps) => {
                 </ContactItem>
               </div>
               <button type="submit" disabled={disabledValue}>
-                SEND MESSAGE
+                {isLoading ? (
+                  <BeatLoader color="#5d5d5d" size={13} />
+                ) : (
+                  <div>SEND MESSAGE</div>
+                )}
               </button>
             </LeftBox>
             <ContactItem className="message">
@@ -122,10 +132,11 @@ const LeftBox = styled.div`
     &:last-child {
       all: unset;
       cursor: pointer;
-      padding: 1rem 1.75rem;
+      padding: 18px 1.75rem 1rem;
       font-size: 17px;
       text-align: center;
-      border: 1px solid ${theme.colors.darkLow};
+      width: 131.19px;
+      border: 1px solid #5d5d5d;
     }
   }
 `;
