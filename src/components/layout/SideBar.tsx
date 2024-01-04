@@ -56,11 +56,12 @@ export default SideBar;
 
 const Navigation = styled.ul`
   width: 14%;
+  height: 100vh;
   position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 200px;
+  margin-top: 84px;
   min-width: 160px;
   font-family: "PuradakGentleGothicR";
 
