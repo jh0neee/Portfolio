@@ -1,13 +1,10 @@
-import { useGoToMenu } from "@/hooks/useGoToMenu";
-import { activeMenuState } from "@/recoil/atom";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
+import { activeMenuState } from "@/recoil/atom";
 import styled from "styled-components";
-
-const projectMenu = [
-  { name: "Billim", width: "90px", left: "-10px" },
-  { name: "Portfolio", width: "130px", left: "-11px" },
-  { name: "Survey", width: "100px", left: "-6px" },
-];
+import { useGoToMenu } from "@/hooks/useGoToMenu";
+import { useScroll } from "@/hooks/useScroll";
+import { projectMenu, sections } from "../constant/data";
 
 interface ActiveProps {
   $menuWidth: string;
@@ -17,6 +14,14 @@ interface ActiveProps {
 const SideBar = () => {
   const [activeMenu, setActiveMenu] = useRecoilState(activeMenuState);
   const { handleGoTo } = useGoToMenu();
+
+  // 스크롤 이벤트 hook
+  useScroll(setActiveMenu);
+
+  useEffect(() => {
+    const defaultSection = sections[0];
+    setActiveMenu(defaultSection);
+  }, []);
 
   const handleActive = (menu: string) => {
     setActiveMenu(menu);
