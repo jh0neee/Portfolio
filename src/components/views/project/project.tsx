@@ -36,7 +36,7 @@ const Project = () => {
   return (
     <ProjectLayout>
       {data?.map(data => (
-        <DataWrapper id={data.name}>
+        <DataWrapper id={data.name} key={data.name}>
           <TitleContainer>
             <FlipCard />
             <ExplainContent>
@@ -46,8 +46,8 @@ const Project = () => {
               </TitleBox>
               <hr />
               <TitleText>{data.overview}</TitleText>
-              {data.link.map(link => (
-                <SubTitleBox>
+              {data.link.map((link, idx) => (
+                <SubTitleBox key={`${data.name}-link-${idx}`}>
                   <FlexDivBox>
                     {link.title === "배포 링크" ? (
                       <IoLinkOutline />
@@ -57,7 +57,9 @@ const Project = () => {
                     <p>{link.title}</p>
                   </FlexDivBox>
                   {link.href.map(href => (
-                    <a href={href}>{href}</a>
+                    <a key={`${data.name}-link-${href}`} href={href}>
+                      {href}
+                    </a>
                   ))}
                   {link.text && <LinkText>{link.text}</LinkText>}
                 </SubTitleBox>
