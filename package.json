@@ -25,7 +25,8 @@
     "recoil": "^0.7.7",
     "rss-parser": "^3.13.0",
     "styled-components": "^6.1.1",
-    "styled-normalize": "^8.1.0"
+    "styled-normalize": "^8.1.0",
+    "sweetalert2": "^11.10.2"
   },
   "devDependencies": {
     "@types/node": "^20",

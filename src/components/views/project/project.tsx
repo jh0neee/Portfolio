@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import FlipCard from "./FlipCard";
+import Swal from "sweetalert2";
 import { getData } from "@/firebase/firebase";
 import { useQuery } from "@tanstack/react-query";
 import { IoLinkOutline, IoLogoGithub } from "react-icons/io5";
@@ -20,10 +21,17 @@ interface Project {
 }
 
 const Project = () => {
-  const { data, isLoading, isError } = useQuery<Project[]>({
+  const { data, isError } = useQuery<Project[]>({
     queryKey: ["project"],
     queryFn: () => getData<Project>("project"),
   });
+
+  if (isError || !data) {
+    Swal.fire({
+      text: "데이터를 가져오는데 문제가 발생했습니다.",
+      icon: "error",
+    });
+  }
 
   return (
     <ProjectLayout>
