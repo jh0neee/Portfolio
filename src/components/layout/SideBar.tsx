@@ -47,7 +47,14 @@ const SideBar = () => {
         <p>ABOUT ME?</p>
       </li>
       <li>
-        <p>SKILL</p>
+        <Menu
+          className={activeMenu === "SKILL" ? "active" : ""}
+          $menuWidth={"90px"}
+          $menuLeft={"-8px"}
+          onClick={() => handleActive("SKILL")}
+        >
+          SKILL
+        </Menu>
       </li>
       <li>
         <p>PROJECT</p>
@@ -102,11 +109,12 @@ const ProjectList = styled.ul`
 
   > * {
     margin-bottom: 21px;
-    cursor: pointer;
   }
 `;
 
 const Menu = styled.div<ActiveProps>`
+  cursor: pointer;
+
   &.active {
     position: relative;
     display: inline-block;

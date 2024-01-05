@@ -4,6 +4,7 @@ import Blog from "@/components/views/Blog";
 import NavBar from "@/components/layout/NavBar";
 import SideBar from "@/components/layout/SideBar";
 import Project from "@/components/views/project/Project";
+import Skill from "@/components/views/skill/Skill";
 import { getData } from "@/util/firebase/firebase";
 import { fetchRssFeed } from "@/util/fetchRssFeed";
 import { useRecoilState } from "recoil";
@@ -17,7 +18,16 @@ const Home: NextPage = () => {
       <NavBar />
       <ContentLayout>
         <SideBar />
-        <Content>{selectMenu ? <Blog /> : <Project />}</Content>
+        <Content>
+          {selectMenu ? (
+            <Blog />
+          ) : (
+            <>
+              <Skill />
+              <Project />
+            </>
+          )}
+        </Content>
       </ContentLayout>
     </>
   );

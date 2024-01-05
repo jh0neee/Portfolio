@@ -3,4 +3,4 @@ export const projectMenu = [
   { name: "Portfolio", width: "130px", left: "-11px" },
   { name: "Survey", width: "100px", left: "-6px" },
 ];
-export const sections = ["Billim", "Portfolio", "Survey"];
+export const sections = ["ABOUT ME?", "SKILL", "Billim", "Portfolio", "Survey"];
