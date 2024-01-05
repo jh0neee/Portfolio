@@ -1,17 +1,13 @@
-import { NextPage } from "next";
 import styled from "styled-components";
-import Parser from "rss-parser";
-import NavBar from "@/components/layout/NavBar";
-import SideBar from "@/components/layout/SideBar";
-import { ContentLayout } from "./../index";
+import { fetchRssFeed } from "@/util/fetchRssFeed";
+import { useQuery } from "@tanstack/react-query";
 
-interface BlogPost {
-  title: string;
-  guid: string;
-  date: string;
-}
+const Blog = () => {
+  const { data } = useQuery({
+    queryKey: ["post"],
+    queryFn: () => fetchRssFeed(),
+  });
 
-const Blog: NextPage<{ blogPosts: BlogPost[] }> = ({ blogPosts }) => {
   const dateFormat = (date: string) => {
     const day = new Date(date);
 
@@ -32,64 +28,35 @@ const Blog: NextPage<{ blogPosts: BlogPost[] }> = ({ blogPosts }) => {
   };
 
   return (
-    <>
-      <NavBar />
-      <ContentLayout>
-        <SideBar />
-        <Content>
-          <MemoList>
-            {blogPosts.map((post, idx) => (
-              <MemoItem key={idx}>
-                <MemoLink href={post.guid}>
-                  <h2>{splitTitle(post.title, 0)}</h2>
-                  <h3>{splitTitle(post.title, 1)}</h3>
-                  <p>{dateFormat(post.date)}</p>
-                </MemoLink>
-              </MemoItem>
-            ))}
-          </MemoList>
-        </Content>
-      </ContentLayout>
-    </>
+    <Content>
+      <MemoList>
+        {data?.map((post, idx) => (
+          <MemoItem key={idx}>
+            <MemoLink href={post.guid}>
+              <h2>{splitTitle(post.title, 0)}</h2>
+              <h3>{splitTitle(post.title, 1)}</h3>
+              <p>{dateFormat(post.date)}</p>
+            </MemoLink>
+          </MemoItem>
+        ))}
+      </MemoList>
+    </Content>
   );
 };
-
-export async function getServerSideProps() {
-  try {
-    const paser = new Parser();
-    const feed = await paser.parseURL("https://rss.blog.naver.com/jh0neee.xml");
-
-    const blogPosts = feed.items
-      .map(item => ({
-        title: item.title || "",
-        guid: item.guid || "",
-        date: item.pubDate || "",
-      }))
-      .slice(0, 8);
-
-    return {
-      props: { blogPosts },
-    };
-  } catch (error) {
-    alert("post를 가져오지 못했습니다.");
-
-    return {
-      props: { blogPosts: [] },
-    };
-  }
-}
 
 export default Blog;
 
 const Content = styled.div`
-  width: 86%;
+  width: 81.8%;
+  position: relative;
+  left: 14%;
   display: flex;
-  margin-top: 120px;
+  margin-top: 84px;
+  height: calc(100vh - 84px);
   align-items: center;
   padding: 1.5rem 2rem 0;
-  font-size: 1rem;
-  background-image: url("/image/granite-texture.jpg");
-  background-size: cover;
+  font-size: 0.9rem;
+  font-family: "SUIT-Regular";
   color: #fff;
 `;
 

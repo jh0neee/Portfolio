@@ -6,6 +6,15 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/rss/jh0neee",
+        destination: "https://rss.blog.naver.com/jh0neee.xml",
+      },
+    ];
+  },
 };
 
 module.exports = {
