@@ -1,18 +1,15 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import styled, { css } from "styled-components";
 import Contact from "../views/Contact";
-
-interface BlogLinkProps {
-  name: string;
-  path: string;
-  $openModal: boolean;
-}
+import { sections } from "../constant/data";
+import { useGoToMenu } from "@/hooks/useGoToMenu";
+import { useRecoilState } from "recoil";
+import { selectMenuState } from "@/recoil/atom";
 
 const NavBar = () => {
-  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
+  const [selectMenu, setSelectMenu] = useRecoilState(selectMenuState);
+  const { handleGoTo } = useGoToMenu();
 
   const openModal = () => {
     setShowModal(true);
@@ -22,6 +19,11 @@ const NavBar = () => {
     setShowModal(false);
   };
 
+  const goToHome = () => {
+    setSelectMenu(false);
+    handleGoTo(sections[0]);
+  };
+
   return (
     <HeaderContainer>
       <HeaderTitle>
@@ -29,14 +31,13 @@ const NavBar = () => {
           <div />
           <div />
         </HeaderLine>
-        <Link href="/">PORTFOLIO</Link>
+        <p onClick={() => goToHome()}>PORTFOLIO</p>
       </HeaderTitle>
       <HeaderMenu>
         <BlogLink
-          href="/blog"
-          name="/blog"
-          path={router.pathname}
+          onClick={() => setSelectMenu(true)}
           $openModal={showModal}
+          $selectMenu={selectMenu}
         >
           BLOG
         </BlogLink>
@@ -66,7 +67,8 @@ const HeaderTitle = styled.div`
   display: flex;
   align-items: center;
 
-  > a {
+  > p {
+    cursor: pointer;
     padding-left: 27px;
     font-size: 2rem;
     letter-spacing: 0.5px;
@@ -123,9 +125,10 @@ const commonLinkStyle = css`
   }
 `;
 
-const BlogLink = styled(Link)<BlogLinkProps>`
+const BlogLink = styled.p<{ $selectMenu: boolean; $openModal: boolean }>`
+  cursor: pointer;
   ${props =>
-    props.name === props.path &&
+    props.$selectMenu &&
     !props.$openModal &&
     css`
       ${commonLinkStyle}

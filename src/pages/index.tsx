@@ -1,21 +1,23 @@
 import { GetStaticProps, NextPage } from "next";
 import styled from "styled-components";
+import Blog from "@/components/views/Blog";
 import NavBar from "@/components/layout/NavBar";
 import SideBar from "@/components/layout/SideBar";
 import Project from "@/components/views/project/Project";
 import { getData } from "@/util/firebase/firebase";
 import { fetchRssFeed } from "@/util/fetchRssFeed";
+import { useRecoilState } from "recoil";
+import { selectMenuState } from "@/recoil/atom";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 
 const Home: NextPage = () => {
+  const [selectMenu] = useRecoilState(selectMenuState);
   return (
     <>
       <NavBar />
       <ContentLayout>
         <SideBar />
-        <Content>
-          <Project />
-        </Content>
+        <Content>{selectMenu ? <Blog /> : <Project />}</Content>
       </ContentLayout>
     </>
   );
