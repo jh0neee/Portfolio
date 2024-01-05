@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import FlipCard from "./FlipCard";
 import Swal from "sweetalert2";
-import { getData } from "@/firebase/firebase";
+import { getData } from "@/util/firebase/firebase";
 import { useQuery } from "@tanstack/react-query";
 import { IoLinkOutline, IoLogoGithub } from "react-icons/io5";
 
