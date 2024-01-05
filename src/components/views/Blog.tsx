@@ -47,14 +47,10 @@ const Blog = () => {
 export default Blog;
 
 const Content = styled.div`
-  width: 81.8%;
-  position: relative;
-  left: 14%;
   display: flex;
-  margin-top: 84px;
   height: calc(100vh - 84px);
   align-items: center;
-  padding: 1.5rem 2rem 0;
+  padding: 5.25rem 2rem 0;
   font-size: 0.9rem;
   font-family: "SUIT-Regular";
   color: #fff;
