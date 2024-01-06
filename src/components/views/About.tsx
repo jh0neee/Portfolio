@@ -49,22 +49,22 @@ const About = () => {
           <Title>Skill.</Title>
           <div>
             {front.map(el => (
-              <HashTag key={el} highlightColor="#FC006F">
+              <HashTag key={el} $highlightcolor="#FC006F">
                 #{el}
               </HashTag>
             ))}
             {back.map(el => (
-              <HashTag key={el} highlightColor="#1ddb16">
+              <HashTag key={el} $highlightcolor="#1ddb16">
                 #{el}
               </HashTag>
             ))}
             {devops.map(el => (
-              <HashTag key={el} highlightColor="#D400C6">
+              <HashTag key={el} $highlightcolor="#D400C6">
                 #{el}
               </HashTag>
             ))}
             {etc.map(el => (
-              <HashTag key={el} highlightColor="#5f00ff">
+              <HashTag key={el} $highlightcolor="#5f00ff">
                 #{el}
               </HashTag>
             ))}
@@ -160,7 +160,7 @@ const SkillBox = styled.div`
   }
 `;
 
-const HashTag = styled.p<{ highlightColor: string }>`
+const HashTag = styled.p<{ $highlightcolor: string }>`
   position: relative;
   width: fit-content;
   padding: 0.1rem 0.5rem;
@@ -178,7 +178,7 @@ const HashTag = styled.p<{ highlightColor: string }>`
     width: 100%;
     height: 110%;
     background: ${props =>
-      `linear-gradient(to top, ${props.highlightColor} 100%, transparent 50%)`};
+      `linear-gradient(to top, ${props.$highlightcolor} 100%, transparent 50%)`};
     transform: skew(-20deg);
     z-index: -1;
   }
