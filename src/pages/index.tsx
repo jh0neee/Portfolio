@@ -3,18 +3,23 @@ import Blog from "@/components/views/Blog";
 import Project from "@/components/views/project/Project";
 import About from "@/components/views/About";
 import Layout from "@/components/layout/Layout";
+import DetailProject from "@/components/views/project/DetailProject";
 import { getData } from "@/util/firebase/firebase";
 import { fetchRssFeed } from "@/util/fetchRssFeed";
 import { useRecoilState } from "recoil";
-import { selectBlogState } from "@/recoil/atom";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
+import { clickProjectState, selectBlogState } from "@/recoil/atom";
 
 const Home: NextPage = () => {
   const [selectBlog] = useRecoilState(selectBlogState);
+  const [clickProject] = useRecoilState(clickProjectState);
+
   return (
     <Layout>
       {selectBlog ? (
         <Blog />
+      ) : clickProject ? (
+        <DetailProject />
       ) : (
         <>
           <About />

@@ -1,10 +1,15 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import { useScroll } from "@/hooks/useScroll";
 import { useGoToMenu } from "@/hooks/useGoToMenu";
-import { useRecoilState } from "recoil";
-import { activeMenuState, selectBlogState } from "@/recoil/atom";
 import { projectMenu, sections } from "../constant/data";
+import {
+  activeMenuState,
+  clickProjectState,
+  selectBlogState,
+  selectedMenuState,
+} from "@/recoil/atom";
 
 interface ActiveProps {
   $menuWidth: string;
@@ -14,7 +19,8 @@ interface ActiveProps {
 const SideBar = () => {
   const [activeMenu, setActiveMenu] = useRecoilState(activeMenuState);
   const [selectBlog, setSelectBlog] = useRecoilState(selectBlogState);
-  const [selectedMenu, setSelectedMenu] = useState("");
+  const [clickProject, setClickProject] = useRecoilState(clickProjectState);
+  const [selectedMenu, setSelectedMenu] = useRecoilState(selectedMenuState);
 
   const { handleGoTo } = useGoToMenu(); // 선택 섹션으로 스크롤 이동
 
@@ -22,17 +28,18 @@ const SideBar = () => {
   useScroll(setActiveMenu);
 
   useEffect(() => {
-    if (!selectBlog) {
+    if (selectBlog || clickProject) {
+      setActiveMenu("");
+    } else if (!selectBlog || !clickProject) {
       const defaultSection = selectedMenu || sections[0];
       setActiveMenu(defaultSection);
       handleGoTo(defaultSection);
-    } else {
-      setActiveMenu("");
     }
-  }, [selectBlog]);
+  }, [selectBlog, clickProject]);
 
   const handleActive = (menu: string) => {
     setSelectBlog(false);
+    setClickProject(false);
 
     // 선택한 메뉴명 저장
     setSelectedMenu(menu);

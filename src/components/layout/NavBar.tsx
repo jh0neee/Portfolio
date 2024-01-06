@@ -1,13 +1,20 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 import Contact from "../views/Contact";
-import { sections } from "../constant/data";
 import { useGoToMenu } from "@/hooks/useGoToMenu";
-import { useRecoilState } from "recoil";
-import { selectBlogState } from "@/recoil/atom";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import {
+  activeMenuState,
+  clickProjectState,
+  selectBlogState,
+  selectedMenuState,
+} from "@/recoil/atom";
 
 const NavBar = () => {
   const [showModal, setShowModal] = useState(false);
+  const setActiveMenu = useSetRecoilState(activeMenuState);
+  const setClickProject = useSetRecoilState(clickProjectState);
+  const setSelectedMenu = useSetRecoilState(selectedMenuState);
   const [selectBlog, setSelectBlog] = useRecoilState(selectBlogState);
   const { handleGoTo } = useGoToMenu();
 
@@ -21,7 +28,12 @@ const NavBar = () => {
 
   const goToHome = () => {
     setSelectBlog(false);
-    handleGoTo(sections[0]);
+    setClickProject(false);
+
+    setSelectedMenu("ABOUT");
+    setActiveMenu("ABOUT");
+
+    handleGoTo("ABOUT");
   };
 
   return (
