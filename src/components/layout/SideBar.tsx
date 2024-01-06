@@ -44,16 +44,13 @@ const SideBar = () => {
   return (
     <Navigation>
       <li>
-        <p>ABOUT ME?</p>
-      </li>
-      <li>
         <Menu
-          className={activeMenu === "SKILL" ? "active" : ""}
-          $menuWidth={"90px"}
-          $menuLeft={"-8px"}
-          onClick={() => handleActive("SKILL")}
+          className={activeMenu === "ABOUT" ? "active" : ""}
+          $menuWidth={"110px"}
+          $menuLeft={"-7px"}
+          onClick={() => handleActive("ABOUT")}
         >
-          SKILL
+          ABOUT
         </Menu>
       </li>
       <li>
@@ -96,7 +93,7 @@ const Navigation = styled.ul`
     align-self: center;
     text-decoration: none;
 
-    &:nth-child(3) {
+    &:nth-child(2) {
       margin-bottom: 2rem;
     }
   }
