@@ -6,6 +6,7 @@ ${normalize}
 *{
     margin: 0;
     padding: 0;
+    user-select: none;
   }
   html {
     box-sizing: border-box;
@@ -14,7 +15,7 @@ ${normalize}
   }
   a {
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: underline;
     color: inherit;
   }
   ul {
