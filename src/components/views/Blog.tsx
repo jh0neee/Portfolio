@@ -17,13 +17,16 @@ const Blog = () => {
     return fomattedDate;
   };
 
-  const splitTitle = (title: string, cnt: number) => {
-    const splittedArray = title.split("]")[cnt];
+  const titleTag = (idx: number, length: number) => {
+    const lastItem = idx === length - 1;
+    const beforeLastItem = idx === length - 2;
 
-    if (cnt === 0) {
-      return splittedArray + "]";
-    } else if (cnt === 1) {
-      return splittedArray;
+    if (lastItem) {
+      return "[Project | Survey]";
+    } else if (beforeLastItem) {
+      return "[React]";
+    } else {
+      return "[Project | Billim]";
     }
   };
 
@@ -33,8 +36,8 @@ const Blog = () => {
         {data?.map((post, idx) => (
           <MemoItem key={idx}>
             <MemoLink href={post.guid}>
-              <h2>{splitTitle(post.title, 0)}</h2>
-              <h3>{splitTitle(post.title, 1)}</h3>
+              <h2>{titleTag(idx, data.length)}</h2>
+              <h3>{post.title}</h3>
               <p>{dateFormat(post.date)}</p>
             </MemoLink>
           </MemoItem>
