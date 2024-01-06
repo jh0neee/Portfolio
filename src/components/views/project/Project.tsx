@@ -11,6 +11,7 @@ interface Project {
   function: string | string[];
   content: string;
   stack: string[];
+  probsolv: string;
   overview: string;
   link: string;
   repo: string[];
@@ -71,15 +72,8 @@ const Project = () => {
               </SubContentBox>
             </ContentBox>
             <ContentBox>
-              <ContentTitle>구현 기능</ContentTitle>
-              {typeof data.function === "string" ? (
-                <ContentList>{data.function}</ContentList>
-              ) : (
-                data.function.map((func, idx) => (
-                  <ContentList key={idx}>{func}</ContentList>
-                ))
-              )}
-              <p>프로젝트 상세보기 &gt;</p>
+              <ContentTitle>문제점&해결과정</ContentTitle>
+              <ContentText>{data.probsolv}</ContentText>
             </ContentBox>
           </ContentContainer>
         </DataWrapper>
@@ -174,13 +168,6 @@ const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
 
-  > p:last-child {
-    align-self: flex-end;
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-  }
-
   @media (min-width: 1540px) {
     width: 30%;
 
@@ -198,6 +185,7 @@ const ContentTitle = styled.div`
 
 const ContentText = styled.p`
   line-height: 1.5;
+  font-size: 1.1rem;
 `;
 const ContentList = styled.p`
   margin: 0.3rem 0;
