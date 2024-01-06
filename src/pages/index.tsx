@@ -1,10 +1,8 @@
 import { GetStaticProps, NextPage } from "next";
-import styled from "styled-components";
 import Blog from "@/components/views/Blog";
-import NavBar from "@/components/layout/NavBar";
-import SideBar from "@/components/layout/SideBar";
 import Project from "@/components/views/project/Project";
 import About from "@/components/views/About";
+import Layout from "@/components/layout/Layout";
 import { getData } from "@/util/firebase/firebase";
 import { fetchRssFeed } from "@/util/fetchRssFeed";
 import { useRecoilState } from "recoil";
@@ -14,22 +12,16 @@ import { QueryClient, dehydrate } from "@tanstack/react-query";
 const Home: NextPage = () => {
   const [selectMenu] = useRecoilState(selectMenuState);
   return (
-    <>
-      <NavBar />
-      <ContentLayout>
-        <SideBar />
-        <Content>
-          {selectMenu ? (
-            <Blog />
-          ) : (
-            <>
-              <About />
-              <Project />
-            </>
-          )}
-        </Content>
-      </ContentLayout>
-    </>
+    <Layout>
+      {selectMenu ? (
+        <Blog />
+      ) : (
+        <>
+          <About />
+          <Project />
+        </>
+      )}
+    </Layout>
   );
 };
 
@@ -58,16 +50,3 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
-
-export const ContentLayout = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Content = styled.div`
-  width: 86%;
-  overflow: auto;
-  position: relative;
-  left: 13.9%;
-`;
