@@ -5,7 +5,7 @@ export const activeMenuState = atom({
   default: "",
 });
 
-export const selectMenuState = atom({
-  key: "selectMenuState",
+export const selectBlogState = atom({
+  key: "selectBlogState",
   default: false,
 });

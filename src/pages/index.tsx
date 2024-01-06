@@ -6,14 +6,14 @@ import Layout from "@/components/layout/Layout";
 import { getData } from "@/util/firebase/firebase";
 import { fetchRssFeed } from "@/util/fetchRssFeed";
 import { useRecoilState } from "recoil";
-import { selectMenuState } from "@/recoil/atom";
+import { selectBlogState } from "@/recoil/atom";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 
 const Home: NextPage = () => {
-  const [selectMenu] = useRecoilState(selectMenuState);
+  const [selectBlog] = useRecoilState(selectBlogState);
   return (
     <Layout>
-      {selectMenu ? (
+      {selectBlog ? (
         <Blog />
       ) : (
         <>

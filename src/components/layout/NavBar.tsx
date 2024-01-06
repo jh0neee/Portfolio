@@ -4,11 +4,11 @@ import Contact from "../views/Contact";
 import { sections } from "../constant/data";
 import { useGoToMenu } from "@/hooks/useGoToMenu";
 import { useRecoilState } from "recoil";
-import { selectMenuState } from "@/recoil/atom";
+import { selectBlogState } from "@/recoil/atom";
 
 const NavBar = () => {
   const [showModal, setShowModal] = useState(false);
-  const [selectMenu, setSelectMenu] = useRecoilState(selectMenuState);
+  const [selectBlog, setSelectBlog] = useRecoilState(selectBlogState);
   const { handleGoTo } = useGoToMenu();
 
   const openModal = () => {
@@ -20,7 +20,7 @@ const NavBar = () => {
   };
 
   const goToHome = () => {
-    setSelectMenu(false);
+    setSelectBlog(false);
     handleGoTo(sections[0]);
   };
 
@@ -35,9 +35,9 @@ const NavBar = () => {
       </HeaderTitle>
       <HeaderMenu>
         <BlogLink
-          onClick={() => setSelectMenu(true)}
+          onClick={() => setSelectBlog(true)}
           $openModal={showModal}
-          $selectMenu={selectMenu}
+          $selectBlog={selectBlog}
         >
           BLOG
         </BlogLink>
@@ -125,10 +125,10 @@ const commonLinkStyle = css`
   }
 `;
 
-const BlogLink = styled.p<{ $selectMenu: boolean; $openModal: boolean }>`
+const BlogLink = styled.p<{ $selectBlog: boolean; $openModal: boolean }>`
   cursor: pointer;
   ${props =>
-    props.$selectMenu &&
+    props.$selectBlog &&
     !props.$openModal &&
     css`
       ${commonLinkStyle}
