@@ -3,21 +3,17 @@ import FlipCard from "./FlipCard";
 import Swal from "sweetalert2";
 import { getData } from "@/util/firebase/firebase";
 import { useQuery } from "@tanstack/react-query";
-import { IoLinkOutline, IoLogoGithub } from "react-icons/io5";
+import { IoLogoGithub } from "react-icons/io5";
 
 interface Project {
   type: string;
   name: string;
-  function: string;
+  function: string | string[];
   content: string;
-  stack: string;
+  stack: string[];
   overview: string;
-  probsolv: string;
-  link: {
-    title: string;
-    text: string;
-    href: string[];
-  }[];
+  link: string;
+  repo: string[];
 }
 
 const Project = () => {
@@ -42,28 +38,21 @@ const Project = () => {
             <ExplainContent>
               <TitleBox>
                 <p>{data.name}</p>
-                <p>{data.type} Project</p>
+                <a href={data.link}>{data.link}</a>
               </TitleBox>
               <hr />
               <TitleText>{data.overview}</TitleText>
-              {data.link.map((link, idx) => (
-                <SubTitleBox key={`${data.name}-link-${idx}`}>
-                  <FlexDivBox>
-                    {link.title === "배포 링크" ? (
-                      <IoLinkOutline />
-                    ) : (
-                      <IoLogoGithub />
-                    )}
-                    <p>{link.title}</p>
-                  </FlexDivBox>
-                  {link.href.map(href => (
-                    <a key={`${data.name}-link-${href}`} href={href}>
-                      {href}
-                    </a>
-                  ))}
-                  {link.text && <LinkText>{link.text}</LinkText>}
-                </SubTitleBox>
-              ))}
+              <SubTitleBox>
+                <FlexDivBox>
+                  <IoLogoGithub />
+                  <p>Repository</p>
+                </FlexDivBox>
+                {data.repo.map(href => (
+                  <a key={`${data.name}-link-${href}`} href={href}>
+                    {href}
+                  </a>
+                ))}
+              </SubTitleBox>
             </ExplainContent>
           </TitleContainer>
           <ContentContainer>
@@ -72,18 +61,25 @@ const Project = () => {
               <ContentText>{data.content}</ContentText>
               <SubContentBox>
                 <div>
-                  <SubContentTitle>Stack</SubContentTitle>
-                  <p>{data.stack}</p>
-                </div>
-                <div>
-                  <SubContentTitle>구현 기능</SubContentTitle>
-                  <p>{data.function}</p>
+                  <SubContentTitle>Stack used</SubContentTitle>
+                  <StackText>
+                    {data.stack.map(el => (
+                      <div key={el}>{el}</div>
+                    ))}
+                  </StackText>
                 </div>
               </SubContentBox>
             </ContentBox>
             <ContentBox>
-              <ContentTitle>문제점&해결과정</ContentTitle>
-              <ContentText>{data.probsolv}</ContentText>
+              <ContentTitle>구현 기능</ContentTitle>
+              {typeof data.function === "string" ? (
+                <ContentList>{data.function}</ContentList>
+              ) : (
+                data.function.map((func, idx) => (
+                  <ContentList key={idx}>{func}</ContentList>
+                ))
+              )}
+              <p>프로젝트 상세보기 &gt;</p>
             </ContentBox>
           </ContentContainer>
         </DataWrapper>
@@ -127,7 +123,7 @@ const TitleContainer = styled.div`
 `;
 
 const ExplainContent = styled.div`
-  width: 366px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -138,16 +134,24 @@ const TitleBox = styled.div`
   display: flex;
   align-items: flex-end;
   margin-bottom: 0.5rem;
+  text-align: center;
 
   > p:first-child {
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: 5px;
   }
+
+  > a:last-child {
+    margin-left: 1.3rem;
+    color: #549895;
+    text-decoration: underline;
+    text-decoration-color: #549895;
+  }
 `;
 
 const TitleText = styled.p`
-  width: 335px;
+  width: 370px;
   font-size: 1.1rem;
   line-height: 1.3;
   margin: 1rem 0 0;
@@ -170,6 +174,13 @@ const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
 
+  > p:last-child {
+    align-self: flex-end;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+
   @media (min-width: 1540px) {
     width: 30%;
 
@@ -187,6 +198,12 @@ const ContentTitle = styled.div`
 
 const ContentText = styled.p`
   line-height: 1.5;
+`;
+const ContentList = styled.p`
+  margin: 0.3rem 0;
+  padding: 0.5rem 1.5rem;
+  border-radius: 15px;
+  background-color: whitesmoke;
 `;
 
 const SubContentBox = styled.div`
@@ -229,7 +246,14 @@ const SubTitleBox = styled.div`
   margin-top: 1.5rem;
 `;
 
-const LinkText = styled.p`
-  font-size: 0.8rem;
-  margin-top: 0.3rem;
+const StackText = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  > div {
+    background: rgba(149, 196, 180, 0.3);
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 10px;
+    margin: 0 5px 5px 0;
+  }
 `;
