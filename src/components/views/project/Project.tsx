@@ -13,6 +13,7 @@ interface Project {
   stack: string[];
   probsolv: string;
   overview: string;
+  image: string;
   link: string;
   repo: string[];
 }
@@ -35,7 +36,7 @@ const Project = () => {
       {data?.map(data => (
         <DataWrapper id={data.name} key={data.name}>
           <TitleContainer>
-            <FlipCard />
+            <FlipCard imagePath={data.image} />
             <ExplainContent>
               <TitleBox>
                 <p>{data.name}</p>

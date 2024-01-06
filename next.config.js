@@ -7,6 +7,10 @@ const nextConfig = {
     styledComponents: true,
   },
 
+  images: {
+    domains: ["firebasestorage.googleapis.com"],
+  },
+
   async rewrites() {
     return [
       {

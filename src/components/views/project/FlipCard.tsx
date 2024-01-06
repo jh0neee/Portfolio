@@ -1,15 +1,14 @@
 import Image from "next/image";
 import { useState } from "react";
 import styled, { css } from "styled-components";
+import ImageFile from "@/components/common/ImageFile";
 
-interface StyleCard {
-  $isFlipped: boolean;
-  $isChecked: boolean;
+interface ImageCardProps {
+  imagePath: string;
 }
 
-const FlipCard = () => {
+const FlipCard = ({ imagePath }: ImageCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
 
   const handleCardClick = () => {
     setIsFlipped(!isFlipped);
@@ -17,29 +16,18 @@ const FlipCard = () => {
 
   return (
     <CardWrapper>
-      {/* <input
-        type="checkbox"
-        checked={isChecked}
-        onChange={() => setIsChecked(prev => !prev)}
-      /> */}
       <p>아래 이미지를 클릭하면 자세히 볼 수 있습니다.</p>
       <Container onClick={handleCardClick}>
-        <Card $isFlipped={isFlipped} $isChecked={isChecked}>
+        <Card $isFlipped={isFlipped}>
           <Front>
-            <Image
-              src="/image/project_billim.png"
-              alt="front이미지"
-              width={480}
-              height={250}
-              priority
-            />
+            <ImageFile imagePath={imagePath} altText="front 이미지" />
           </Front>
 
           <Back>
             <Image
               src="/image/project_survey.png"
               alt="back이미지"
-              width={480}
+              width={450}
               height={250}
               priority
             />
@@ -62,11 +50,11 @@ const CardWrapper = styled.div`
 
 const Container = styled.div`
   position: relative;
-  width: 480px;
+  width: 450px;
   height: 250px;
 `;
 
-const Card = styled.div<StyleCard>`
+const Card = styled.div<{ $isFlipped: boolean }>`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -74,15 +62,6 @@ const Card = styled.div<StyleCard>`
   transition: all 0.5s ease;
 
   ${props =>
-    props.$isChecked &&
-    css`
-      &:hover {
-        transform: rotateY(180deg);
-      }
-    `}
-
-  ${props =>
-    !props.$isChecked &&
     props.$isFlipped &&
     css`
       transform: rotateY(180deg);
@@ -100,6 +79,7 @@ const Front = styled.div`
   > img {
     width: 100%;
     height: 100%;
+    border: 1px solid lightgrey;
   }
 `;
 
