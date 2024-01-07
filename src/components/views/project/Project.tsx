@@ -188,12 +188,12 @@ const ContentText = styled.p`
   line-height: 1.5;
   font-size: 1.1rem;
 `;
-const ContentList = styled.p`
-  margin: 0.3rem 0;
-  padding: 0.5rem 1.5rem;
-  border-radius: 15px;
-  background-color: whitesmoke;
-`;
+// const ContentList = styled.p`
+//   margin: 0.3rem 0;
+//   padding: 0.5rem 1.5rem;
+//   border-radius: 15px;
+//   background-color: whitesmoke;
+// `;
 
 const SubContentBox = styled.div`
   display: flex;
