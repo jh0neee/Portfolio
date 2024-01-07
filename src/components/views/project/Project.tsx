@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import FlipCard from "./FlipCard";
 import Swal from "sweetalert2";
+import ImageFile from "@/components/common/ImageFile";
 import { getData } from "@/util/firebase/firebase";
 import { useQuery } from "@tanstack/react-query";
 import { IoLogoGithub } from "react-icons/io5";
@@ -36,7 +36,7 @@ const Project = () => {
       {data?.map(data => (
         <DataWrapper id={data.name} key={data.name}>
           <TitleContainer>
-            <FlipCard imagePath={data.image} />
+            <ImageFile imagePath={data.image} altText="front 이미지" />
             <ExplainContent>
               <TitleBox>
                 <p>{data.name}</p>
