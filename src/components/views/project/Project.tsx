@@ -110,6 +110,12 @@ const TitleContainer = styled.div`
   align-items: center;
   align-content: center;
 
+  > img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgrey;
+  }
+
   @media (min-width: 1540px) {
     display: flex;
     justify-content: space-evenly;
