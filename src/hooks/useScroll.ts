@@ -12,7 +12,7 @@ export const useScroll = (
     for (const sectionId of sections) {
       const section = document.getElementById(sectionId);
       if (section) {
-        const sectionTop = section.offsetTop;
+        const sectionTop = section.offsetTop - 100;
 
         if (window.scrollY >= sectionTop) {
           currentSection = sectionId;
