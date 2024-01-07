@@ -111,8 +111,8 @@ const TitleContainer = styled.div`
   align-content: center;
 
   > img {
-    width: 100%;
-    height: 100%;
+    width: 450px;
+    height: 250px;
     border: 1px solid lightgrey;
   }
 
