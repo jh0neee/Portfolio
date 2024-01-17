@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio
+프론트엔드 취업을 위한 포트폴리오 프로젝트입니다. 
+<br>
+기존에 사용해보지 않았던 기술들을 연습하자는 목적으로 사용하여 개발하였습니다. 
 
-## Getting Started
+배포URL: <a href="https://jh0neee.vercel.app/">https://jh0neee.vercel.app</a>
+<br>
+<br>
+### 사용 기술
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/> <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white"/> <img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=recoil&logoColor=white"/> <img src="https://img.shields.io/badge/ReactQuery-FF4154?style=flat-square&logo=reactquery&logoColor=white"/> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styledcomponents&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black"/>
 
-First, run the development server:
+### 주요 기능
+- 스크롤 이벤트를 적용하였습니다.
+- RSS를 활용해 동적으로 최신 블로그 포스트를 가져오도록 하였습니다.
+- firebase를 이용하여 서버에서 데이터를 받아오도록 하였습니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Preview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Main(Scroll Event) | Blog | Contact |
+|:-:|:-:|:-:|
+|![main](https://github.com/jh0neee/Portfolio/assets/108544145/2d9cc290-b32e-4ce0-9355-167f379e791c)|![blog](https://github.com/jh0neee/Portfolio/assets/108544145/c29a5f60-bbc7-4c2a-a3af-8dcab3489509)|![email](https://github.com/jh0neee/Portfolio/assets/108544145/af44b473-7ff6-4da5-9f88-bc7cbcf39f19)|
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
