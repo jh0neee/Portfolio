@@ -9,24 +9,30 @@ import { fetchRssFeed } from "@/util/fetchRssFeed";
 import { useRecoilState } from "recoil";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { clickProjectState, selectBlogState } from "@/recoil/atom";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   const [selectBlog] = useRecoilState(selectBlogState);
   const [clickProject] = useRecoilState(clickProjectState);
 
   return (
-    <Layout>
-      {selectBlog ? (
-        <Blog />
-      ) : clickProject ? (
-        <DetailProject />
-      ) : (
-        <>
-          <About />
-          <Project />
-        </>
-      )}
-    </Layout>
+    <>
+      <Head>
+        <title>PORTFOLIO</title>
+      </Head>
+      <Layout>
+        {selectBlog ? (
+          <Blog />
+        ) : clickProject ? (
+          <DetailProject />
+        ) : (
+          <>
+            <About />
+            <Project />
+          </>
+        )}
+      </Layout>
+    </>
   );
 };
 

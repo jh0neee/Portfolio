@@ -35,10 +35,12 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
-          {/* <link rel="icon" href="/logo.svg" /> */}
-          <meta name="viewport" content="width=device-width" />
+          <link rel="icon" href="/favicon.png" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta property="og:title" content="PORTFOLIO" />
+          <meta property="og:description" content="심지현 포트폴리오입니다." />
         </Head>
         <body>
           <div id="backdrop"></div>
