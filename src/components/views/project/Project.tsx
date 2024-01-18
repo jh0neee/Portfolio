@@ -8,7 +8,7 @@ import { IoLogoGithub } from "react-icons/io5";
 interface Project {
   type: string;
   name: string;
-  function: string | string[];
+  function: string[];
   content: string;
   stack: string[];
   probsolv: string;
@@ -16,6 +16,7 @@ interface Project {
   image: string;
   link: string;
   repo: string[];
+  detail: string;
 }
 
 const Project = () => {
@@ -64,7 +65,7 @@ const Project = () => {
               <SubContentBox>
                 <div>
                   <SubContentTitle>Stack used</SubContentTitle>
-                  <StackText>
+                  <StackText $stackLength={0}>
                     {data.stack.map(el => (
                       <div key={el}>{el}</div>
                     ))}
@@ -75,6 +76,19 @@ const Project = () => {
             <ContentBox>
               <ContentTitle>문제점&해결과정</ContentTitle>
               <ContentText>{data.probsolv}</ContentText>
+              <SubContentBox>
+                <div>
+                  <SubContentTitle>구현 기능</SubContentTitle>
+                  <StackText $stackLength={data.function.length}>
+                    {data.function.map((func, idx) => (
+                      <div key={idx}>{func}</div>
+                    ))}
+                    <a href={data.detail}>
+                      <strong>프로젝트 상세보기 &gt;</strong>
+                    </a>
+                  </StackText>
+                </div>
+              </SubContentBox>
             </ContentBox>
           </ContentContainer>
         </DataWrapper>
@@ -194,12 +208,6 @@ const ContentText = styled.p`
   line-height: 1.5;
   font-size: 1.1rem;
 `;
-// const ContentList = styled.p`
-//   margin: 0.3rem 0;
-//   padding: 0.5rem 1.5rem;
-//   border-radius: 15px;
-//   background-color: whitesmoke;
-// `;
 
 const SubContentBox = styled.div`
   display: flex;
@@ -241,7 +249,7 @@ const SubTitleBox = styled.div`
   margin-top: 1.5rem;
 `;
 
-const StackText = styled.div`
+const StackText = styled.div<{ $stackLength: number }>`
   display: flex;
   flex-wrap: wrap;
   > div {
@@ -250,5 +258,20 @@ const StackText = styled.div`
     padding: 5px 8px;
     border-radius: 10px;
     margin: 0 5px 5px 0;
+  }
+
+  > a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    margin-left: auto;
+    align-self: center;
+    margin-top: ${props => (props.$stackLength > 3 ? "1rem" : 0)};
+    margin-bottom: ${props => (props.$stackLength > 3 ? 0 : "7px")};
+
+    &:hover {
+      color: #549895;
+      text-decoration: underline;
+      text-underline-position: under;
+    }
   }
 `;
