@@ -87,9 +87,10 @@ const IntroWrapper = styled.div`
   height: calc(100vh - 84px);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding-top: 84px;
-  margin: 3rem 5rem 0;
+  /* margin: 3rem 5rem 0; */
   font-family: "SUIT-Regular";
 `;
 
