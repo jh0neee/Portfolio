@@ -35,9 +35,12 @@ const ModalOverlay = ({
     </ModalLayout>
   );
 
-  return ReactDOM.createPortal(
-    content,
-    document.getElementById("portal") as HTMLElement,
+  return (
+    typeof document !== "undefined" &&
+    ReactDOM.createPortal(
+      content,
+      document.getElementById("portal") as HTMLElement,
+    )
   );
 };
 

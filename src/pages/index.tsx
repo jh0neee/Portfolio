@@ -1,15 +1,16 @@
 import { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 import Blog from "@/components/views/Blog";
-import Project from "@/components/views/project/Project";
 import About from "@/components/views/About";
 import Layout from "@/components/layout/Layout";
+import Project from "@/components/views/project/Project";
+import AlertModal from "@/components/views/AlertModal";
 import DetailProject from "@/components/views/project/DetailProject";
 import { getData } from "@/util/firebase/firebase";
 import { fetchRssFeed } from "@/util/fetchRssFeed";
 import { useRecoilState } from "recoil";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { clickProjectState, selectBlogState } from "@/recoil/atom";
-import Head from "next/head";
 
 const Home: NextPage = () => {
   const [selectBlog] = useRecoilState(selectBlogState);
@@ -18,8 +19,9 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>PORTFOLIO</title>
+        <title>JIHYEON PORTFOLIO</title>
       </Head>
+      <AlertModal />
       <Layout>
         {selectBlog ? (
           <Blog />

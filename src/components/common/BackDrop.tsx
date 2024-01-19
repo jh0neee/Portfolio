@@ -34,9 +34,12 @@ const BackDrop = () => {
     };
   }, []);
 
-  return ReactDOM.createPortal(
-    <BackDropLayout />,
-    document.getElementById("backdrop") as HTMLElement,
+  return (
+    typeof document !== "undefined" &&
+    ReactDOM.createPortal(
+      <BackDropLayout />,
+      document.getElementById("backdrop") as HTMLElement,
+    )
   );
 };
 
