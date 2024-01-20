@@ -45,9 +45,9 @@ export default AlertModal;
 const StyledModal = styled(Modal)`
   font-weight: bold;
   font-family: SUIT-Regular;
-  width: 420px;
-  height: 220px;
-  padding: 1.5rem 2rem;
+  width: 420px !important;
+  height: 220px !important;
+  padding: 1.5rem 2rem !important;
 
   > form {
     width: 100%;
@@ -60,9 +60,9 @@ const StyledModal = styled(Modal)`
   }
 
   @media (max-width: 600px) {
-    width: 70%;
-    height: 23%;
-    left: 50%;
+    width: 70% !important;
+    height: 23% !important;
+    left: 50% !important;
   }
 `;
 
