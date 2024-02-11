@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import ImageFile from "@/components/common/ImageFile";
 import { getData } from "@/util/firebase/firebase";
 import { useQuery } from "@tanstack/react-query";
@@ -20,17 +20,17 @@ interface Project {
 }
 
 const Project = () => {
-  const { data, isError } = useQuery<Project[]>({
+  const { data } = useQuery<Project[]>({
     queryKey: ["project"],
     queryFn: () => getData<Project>("project"),
   });
 
-  if (isError || !data) {
-    Swal.fire({
-      text: "데이터를 가져오는데 문제가 발생했습니다.",
-      icon: "error",
-    });
-  }
+  // if (isError || !data) {
+  //   Swal.fire({
+  //     text: "데이터를 가져오는데 문제가 발생했습니다.",
+  //     icon: "error",
+  //   });
+  // }
 
   return (
     <ProjectLayout>
